@@ -1,0 +1,84 @@
+<div class="purchase-popup">
+    <h3 class="page-title" style="margin: 0px !important;">
+        <span class="page-title-icon bg-gradient-dark text-white mr-2">
+          <i class="mdi mdi-food menu-icon"></i>                 
+        </span>
+        Food News
+    </h3>
+    </div>
+    
+    
+   <!-- <div class="row">
+        <ng-container *ngFor="let result of results" >
+            <div class="col-md-4 grid-margin text-center row-eq-height" >
+                <div class="card">
+                    <img *ngIf="result.multimedia != null" src="{{result.multimedia[2].url}}" width="100%" height="300px" alt="OmegaXone"/>
+                        <img *ngIf="result.multimedia == null" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png" class="center" alt="OmegaXone"/>
+                            <div class="card-body" >
+                                <h4 style="font-weight: 600;">{{result.title}}</h4>
+                                <p style="font-weight: 100;">{{result.abstract}}</p>
+                                <p style="font-weight: 300;">The New York Times <span *ngIf="result.byline != ''">| {{result.byline}} </span></p>
+                                <a href={{result.url}} target="_blank"><button type="button" class="btn btn-gradient-dark btn-fw">Read More</button></a>
+                            </div> 
+                </div>   
+            </div>
+        </ng-container>
+    </div>  -->
+    
+    <!-- <mat-paginator [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator> -->
+
+
+<!-- <div>
+    <div *ngFor="let item of results| slice: (page-1)*pagesize : page*  pagesize; index as i;">
+        <div *ngIf="page==1" scope="row">{{i+1}}</div>
+        <div scope="row" *ngIf="page>1">{{((page-1)*pagesize)+(i+1)}}</div>
+        <div>{{item}}</div>
+    </div>
+</div>
+<ngb-pagination [collectionSize]="totalItems" [(page)]="page" [(pageSize)]="pagesize" [rotate]="true">
+</ngb-pagination> -->
+
+<div *ngIf ="results">
+<div class="container-fluid">
+    <div class="col-md-12 input-group text-center" style ="padding: 0px;">
+        <div class="col-md-8 input-group-addon " style ="padding: 0px;">
+            <ngb-pagination [collectionSize]="results.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        </div>
+        <!-- <div class="col-1 input-group-addon">
+            <input class="input-sm" style="float: right;" type="number" [min]="10" [max]="results.length" step="1" [(ngModel)]="itemsPerPage" (onClick)="changePagesize(pageSize)">
+        </div>  -->
+    </div>
+
+    <div class="row">
+        <ng-container *ngFor="let result of results | slice: pageSize | slice: 0:itemsPerPage" >
+            <div class="col-md-4 grid-margin text-center row-eq-height" >
+                <div class="card">
+                    <img *ngIf="result.multimedia != null" src="{{result.multimedia[2].url}}" width="100%" height="300px" alt="OmegaXone"/>
+                        <img *ngIf="result.multimedia == null" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png" class="center" alt="OmegaXone"/>
+                            <div class="card-body" >
+                                <h4 style="font-weight: 600;">{{result.title}}</h4>
+                                <p style="font-weight: 100;">{{result.abstract}}</p>
+                                <p style="font-weight: 300;">The New York Times <span *ngIf="result.byline != ''">| {{result.byline}} </span></p>
+                                <a href={{result.url}} target="_blank"><button type="button" class="btn btn-gradient-dark btn-fw">Read More</button></a>
+                            </div> 
+                </div>   
+            </div>
+        </ng-container>
+    </div> 
+
+
+    <!-- <ul *ngIf="results">
+        <li *ngFor="let user of results | slice: pageSize | slice: 0:itemsPerPage">
+            
+            <p>{{ user.title }}</p>
+        </li>
+    </ul> -->
+    <div class="col-md-8 input-group-addon " style="padding: 0px;">
+        <ngb-pagination [collectionSize]="results.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+    </div>
+    <pre><span class="float-md-left">Page: {{ currentPage }} / {{numPages.pageCount}}</span><span class="float-md-right">Found items: {{ itemsPerPage }} / {{ results.length }}</span></pre>
+</div>
+</div>

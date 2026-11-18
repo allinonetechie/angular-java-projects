@@ -1,0 +1,25 @@
+<div class="purchase-popup">
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-dark text-white mr-2">
+          <i class="mdi mdi-book-open menu-icon"></i>                 
+        </span>
+        Books News
+    </h3>
+    </div>
+    
+    <div class="row">
+        <ng-container *ngFor="let result of results">
+            <div *ngIf= "result.section == 'Books'" class="col-md-4 grid-margin text-center row-eq-height" >
+                <div class="card">
+                    <img *ngIf="result.multimedia != null" src="{{result.multimedia[2].url}}" width="100%" height="300px" alt="OmegaXone"/>
+                        <img *ngIf="result.multimedia == null" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png" class="center" alt="OmegaXone"/>
+                            <div class="card-body" >
+                                <h4 style="font-weight: 600;">{{result.title}}</h4>
+                                <p style="font-weight: 100;">{{result.abstract}}</p>
+                                <p style="font-weight: 300;">The New York Times <span *ngIf="result.byline != ''">| {{result.byline}} </span></p>
+                                <a href={{result.url}} target="_blank"><button type="button" class="btn btn-gradient-dark btn-fw">Read More</button></a>
+                            </div> 
+                </div>   
+            </div>
+        </ng-container>
+    </div>
